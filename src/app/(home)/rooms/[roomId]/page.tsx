@@ -1,27 +1,19 @@
-'use client'
+import { Room, scGetRoom } from "@/app/api/get-room/callable";
+import React from "react";
+import YoutubePlayer from "./youtube-player";
 
-import YouTube from "react-youtube";
+export default async function RoomPage({ params }: { params: { roomId: string } }) {
 
-export default function RoomPage({ params }: { params: { roomId: string } }) {
+    const { roomId } = await params;
 
-    const videoId = getYouTubeVideoId(params.roomId);
+    const room: Room = await scGetRoom(roomId);
 
     return (
         <div>
-            <YouTube
-                videoId={videoId}
-            ></YouTube>
+            <h1>This is a room for you to Enjoy.</h1>
+            <br />
+            <YoutubePlayer videoUrl={room.content}></YoutubePlayer>
         </div>
     );
 }
 
-function getYouTubeVideoId(url: string): string {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]*\/\S*\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = url.match(regex);
-
-    if (match) {
-        return match[1]; // The video ID is captured in the first group
-    } else {
-        return ""; // Return null if the URL doesn't match the expected formats
-    }
-}

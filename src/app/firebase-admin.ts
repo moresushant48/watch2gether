@@ -13,6 +13,7 @@ const serviceAccount: admin.ServiceAccount = JSON.parse(serviceAccountJson);
 if (!admin.apps.length) {
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
+        databaseURL: "https://watch-2-gether-default-rtdb.asia-southeast1.firebasedatabase.app"
     });
     console.log("Firebase Admin SDK initialized using base64 encoded service account");
 }

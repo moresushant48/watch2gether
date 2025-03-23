@@ -8,6 +8,7 @@ export default function HomePage() {
 
     async function createRoom() {
         const response = await fetch('/api/create-room', {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -19,7 +20,7 @@ export default function HomePage() {
 
         const roomId: string = await response.json();
 
-        router.push(`/rooms/${roomId}`)
+        router.push(`/rooms/${roomId}`);
     }
 
     return (
