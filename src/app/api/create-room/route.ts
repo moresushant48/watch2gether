@@ -5,7 +5,6 @@ import { Database } from "firebase-admin/database";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
-
 export async function POST(request: NextRequest) {
     try {
         const db: Database = admin.database();
@@ -21,6 +20,8 @@ export async function POST(request: NextRequest) {
         await db.ref(`rooms/${uid}`).set({
             roomId: uid,
             content: videoUrl,
+            playState: "PLAY",
+            prevPlayState: "PAUSE",
             createdAt: Date.now(),
         });
 

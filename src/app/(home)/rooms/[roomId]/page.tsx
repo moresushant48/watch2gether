@@ -1,6 +1,9 @@
+'use server'
+
 import { Room, scGetRoom } from "@/app/api/get-room/callable";
 import React from "react";
 import YoutubePlayer from "./youtube-player";
+import { actionUpdatePlayState } from "@/actions/video-play-action";
 
 export default async function RoomPage({ params }: { params: { roomId: string } }) {
 
@@ -10,9 +13,15 @@ export default async function RoomPage({ params }: { params: { roomId: string } 
 
     return (
         <div>
-            <h1>This is a room for you to Enjoy.</h1>
+            <h1 className="text-2xl">W2G</h1>
+
             <br />
-            <YoutubePlayer videoUrl={room.content}></YoutubePlayer>
+
+            <YoutubePlayer
+                roomId={room.roomId}
+                videoUrl={room.content}
+                updatePlayState={actionUpdatePlayState}
+            />
         </div>
     );
 }
