@@ -5,7 +5,7 @@ import React from "react";
 import { actionUpdatePlayState } from "@/actions/video-play-action";
 import YoutubePlayer from "@/components/youtube-player";
 
-export default async function RoomPage({ params }: { params: { roomId: string } }) {
+export default async function RoomPage({ params }: { params: Promise<{ roomId: string }> }) {
 
     const { roomId } = await params;
 
