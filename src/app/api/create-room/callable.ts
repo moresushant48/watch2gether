@@ -11,7 +11,7 @@ export async function scCreateRoom(videoUrl: string): Promise<string> {
     });
 
     if (!response.ok) {
-        throw new Error('Failed to create room');
+        throw new Error('Failed to create room : ' + (await response.text()));
     }
 
     const roomId: string = await response.json();
