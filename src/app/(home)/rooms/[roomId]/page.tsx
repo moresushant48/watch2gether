@@ -2,12 +2,12 @@
 
 import { Room, scGetRoom } from "@/app/api/get-room/callable";
 import React from "react";
-import YoutubePlayer from "./youtube-player";
 import { actionUpdatePlayState } from "@/actions/video-play-action";
 import ShareButtonComponent from "@/components/share-button-component";
 import Link from "next/link";
+import YoutubePlayer from "@/components/youtube-player";
 
-export default async function RoomPage({ params }: { params: { roomId: string } }) {
+export default async function RoomPage({ params }: { params: Promise<{ roomId: string }> }) {
 
     const { roomId } = await params;
 
