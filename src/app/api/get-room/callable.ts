@@ -1,6 +1,6 @@
 export async function scGetRoom(roomId: string): Promise<Room> {
 
-    const response = await fetch("http://localhost:3000/api/get-room", {
+    const response = await fetch("/api/get-room", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
