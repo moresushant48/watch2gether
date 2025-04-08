@@ -1,6 +1,10 @@
+'use server'
+
+import { appBaseUrl } from "@/utils/utils";
+
 export async function scCreateRoom(videoUrl: string): Promise<string> {
 
-    const response = await fetch('/api/create-room', {
+    const response = await fetch(`${appBaseUrl}/api/create-room`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

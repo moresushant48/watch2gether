@@ -1,6 +1,10 @@
+'use server'
+
+import { appBaseUrl } from "@/utils/utils";
+
 export async function scGetRoom(roomId: string): Promise<Room> {
 
-    const response = await fetch("/api/get-room", {
+    const response = await fetch(`${appBaseUrl}/api/get-room`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -17,7 +21,7 @@ export async function scGetRoom(roomId: string): Promise<Room> {
     return await response.json();
 }
 
-export class Room {
-    roomId!: string;
-    content!: string;
+export type Room = {
+    roomId: string;
+    content: string;
 }

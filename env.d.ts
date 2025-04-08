@@ -1,6 +1,7 @@
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
+            NEXT_PUBLIC_BASE_URL: string;
             FIREBASE_ADMIN_KEY: string;
             NEXT_PUBLIC_FIREBASE_API_KEY: string;
             NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: string;
